@@ -70,8 +70,6 @@ public class Main {
                             Date fecha = new Date(f);
                             g.agregarAlumno(matricula,g.getNombre(),"TICS", 
                                     nom, paterno, materno, sexo, fecha);
-                        }else if(opcion2==2){
-
                         }else if(opcion2==3){
                             System.out.println(g.promedio());
                         }else if(opcion2==4){
@@ -79,7 +77,12 @@ public class Main {
                             System.out.println(g.listaAlumnos());
                         }else if(opcion2==5){
                             System.out.println("Ingresa las 5 materias");
-                            
+                            String m1= leer.next();
+                            String m2= leer.next();
+                            String m3= leer.next();
+                            String m4= leer.next();
+                            String m5= leer.next();
+                            g.cargarMaterias(m1, m2, m3, m4, m5);
                         }
                     }
                 }
