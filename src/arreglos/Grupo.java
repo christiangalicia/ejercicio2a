@@ -16,16 +16,49 @@ import java.util.Scanner;
 public class Grupo {
 
     private ArrayList<Alumno> alumnos;
+    private ArrayList<Profesor> profesores;
     private String nombre;
     public Grupo(int noAlumnos, String nombre){
         alumnos = new ArrayList<Alumno>();
+        profesores= new ArrayList<>();
         this.nombre=nombre;
+        alumnos.add(new Alumno(123, nombre, "tics", "christian", "galicia", 
+                "garcia", "hombre", new Date("17/08/1984")));
+        alumnos.add(new Alumno(124, nombre, "tics", "david", "galicia", 
+                "perez", "hombre", new Date("17/08/1988")));
+        alumnos.add(new Alumno(12356, nombre, "tics", "Juan diego", "perez", 
+                "sanchez", "hombre", new Date("17/08/1984")));
+        alumnos.add(new Alumno(12, nombre, "tics", "Ana Maria", "zarate", 
+                "garcia", "hombre", new Date("17/08/1988")));
         
+        profesores.add(new Profesor("Luis", "sanchez", "delgado", "hombre", new Date("17/07/1985"), "Maestria", "PTC", "programacion"));
+        profesores.add(new Profesor("Maria", "sanchez", "delgado", "hombre", new Date("17/07/1984"), "Maestria", "PTC", "redes"));
+        profesores.add(new Profesor("Paco", "sanchez", "delgado", "hombre", new Date("17/07/1983"), "Maestria", "PTC", "ingles"));
+    
     }
     public String getNombre(){
         return nombre;
     }
-    
+    public String reporteInfoAlumnos(){
+        Alumno[] a= new Alumno[10];
+        a= alumnos.toArray(a);
+        return reporteInfoPersonas(a);
+    }
+    public String reporteInfoProfesores(){
+        Profesor[] a= new Profesor[10];
+        a= profesores.toArray(a);
+       return reporteInfoPersonas(a);
+    }
+    public String reporteInfoPersonas(Persona[] personas){
+         String acu="";
+        for (int i = 0; i < personas.length; i++) {
+            if(personas[i] !=null){
+                acu=acu+ personas[i].informacion();
+            }
+        }
+        return acu;
+    }
+            
    public void cargarMaterias(String m1,String m2,
            String m3,String m4,String m5){
        for (int i = 0; i < alumnos.size(); i++) {
@@ -46,23 +79,23 @@ public class Grupo {
         alumnos.add(a);
     }
     
-    public void agregarCalificacionParcial1(String materia, 
-            int matricula, float c){
-        for (int i = 0; i < alumnos.size(); i++) {
-            if(matricula== alumnos.get(i).getMatricula() ){
-                alumnos.get(i).getMateria(materia).setParcial1(c);
-            }
-        }
-    }
-    
-     public void agregarCalificacionParcial2(String materia, 
-            int matricula, float c){
-        for (int i = 0; i < alumnos.size(); i++) {
-            if(matricula== alumnos.get(i).getMatricula() ){
-                alumnos.get(i).getMateria(materia).setParcial2(c);
-            }
-        }
-    }
+//    public void agregarCalificacionParcial1(String materia, 
+//            int matricula, float c){
+//        for (int i = 0; i < alumnos.size(); i++) {
+//            if(matricula== alumnos.get(i).getMatricula() ){
+//                alumnos.get(i).getMateria(materia).setParcial1(c);
+//            }
+//        }
+//    }
+//    
+//     public void agregarCalificacionParcial2(String materia, 
+//            int matricula, float c){
+//        for (int i = 0; i < alumnos.size(); i++) {
+//            if(matricula== alumnos.get(i).getMatricula() ){
+//                alumnos.get(i).getMateria(materia).setParcial2(c);
+//            }
+//        }
+//    }
      
      public Alumno obtenerAlumno(int matricula){
          for (int i = 0; i < alumnos.size(); i++) {
@@ -82,9 +115,10 @@ public class Grupo {
      }
      
      public String listaAlumnos(){
-          String acu="";
+          String acu="MATRICUAL\tEDAD\tNOMBRE\n";
+          acu= acu+"________\t____\t_________________\n";
          for (int i = 0; i < alumnos.size(); i++) {
-             acu=acu+ alumnos.get(i).nombreCompleto()+"\n";
+             acu=acu+ alumnos.get(i).getMatricula() +"\t\t"+alumnos.get(i).edad() +"\t"+alumnos.get(i).nombreCompleto()+"\n";
          }
          return acu;
      }

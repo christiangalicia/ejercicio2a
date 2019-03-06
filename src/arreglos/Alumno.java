@@ -48,20 +48,20 @@ public class Alumno extends Persona{
         this.materias.add(m);
         
     }
-    public void agregarCalificacionPrimerParcial(String m, float c){
-        for (int i = 0; i < materias.size(); i++) {
-            if(m.equals(materias.get(i).getNombre())){
-                materias.get(i).setParcial1(c);
-            }
-        }
-    }
-    public void agregarCalificacionSegundoParcial(String m, float c){
-        for (int i = 0; i < materias.size(); i++) {
-            if(m.equals(materias.get(i).getNombre())){
-                materias.get(i).setParcial2(c);
-            }
-        }
-    }
+//    public void agregarCalificacionPrimerParcial(String m, float c){
+//        for (int i = 0; i < materias.size(); i++) {
+//            if(m.equals(materias.get(i).getNombre())){
+//                materias.get(i).setParcial1(c);
+//            }
+//        }
+//    }
+//    public void agregarCalificacionSegundoParcial(String m, float c){
+//        for (int i = 0; i < materias.size(); i++) {
+//            if(m.equals(materias.get(i).getNombre())){
+//                materias.get(i).setParcial2(c);
+//            }
+//        }
+//    }
     public Materia getMateria(String nombre){
         for (int i = 0; i < materias.size(); i++) {
             if(nombre.equals(materias.get(i).getNombre())){

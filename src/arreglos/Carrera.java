@@ -16,8 +16,9 @@ public class Carrera {
     public Carrera(String nombre,int noGrupos) {
         this.nombre=nombre;
         grupos= new Grupo[noGrupos];
-        noGruposActivos=0;
-        
+        noGruposActivos=2;
+        grupos[0]= new Grupo(5, "2a");
+        grupos[1]= new Grupo(8, "2b");
     }
     
     public void crearNuevoGrupo(int noAlumnos,String nombre){

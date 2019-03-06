@@ -12,21 +12,22 @@ import java.util.Date;
 public class Profesor extends Persona{
     private String tipoProfesor;
     private String gradoEstudios;
+    private String materia;
     
     public Profesor(String nombre,String paterno,
                     String materno, String sexo,
                    Date fechaNacimiento, String gradoEstudios,
-                   String tipoProfesor){
+                   String tipoProfesor, String materia){
         super(nombre, paterno, materno, sexo, fechaNacimiento);
          this.tipoProfesor=tipoProfesor;
          this.gradoEstudios=gradoEstudios;
+         this.materia=materia;
     }
     
    public String informacion(){
-       return nombreCompleto()+ "\n"+
-              edad() +"\n"+ 
-               sexo+"\n"+ gradoEstudios+"\n"+ 
-               tipoProfesor;
+       return edad() +"\t"+ 
+               sexo+"\t"+ gradoEstudios+"\t"+ 
+               tipoProfesor+"\t"+ nombreCompleto()+"\n";
              
    }
     

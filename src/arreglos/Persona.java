@@ -30,7 +30,9 @@ public class Persona {
         return nombre+ " "+ paterno+ " "+ materno;
     }
 
-  
+  public String informacion(){
+      return "";
+  }
 
     public int edad(){
         Date fechaActual = new Date();

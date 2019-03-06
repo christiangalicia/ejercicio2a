@@ -52,6 +52,9 @@ public class Main {
                         System.out.println("3 promedio grupo");
                         System.out.println("4 lista grupo");
                         System.out.println("5 cargar materias al grupo");
+                        System.out.println("6 Reporte info alumnos");
+                        System.out.println("7 Reporte info profesores");
+                        
                         System.out.println("0 salir");
                         opcion2= leer.nextInt();
                         if(opcion2==1){
@@ -83,6 +86,10 @@ public class Main {
                             String m4= leer.next();
                             String m5= leer.next();
                             g.cargarMaterias(m1, m2, m3, m4, m5);
+                        }else if (opcion2==7){
+                            System.out.println(g.reporteInfoProfesores());
+                        }else if (opcion2==6){
+                            System.out.println(g.reporteInfoAlumnos());
                         }
                     }
                 }
