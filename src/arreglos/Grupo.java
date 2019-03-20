@@ -39,6 +39,9 @@ public class Grupo {
     public String getNombre(){
         return nombre;
     }
+    public int noAlumnos(){
+        return alumnos.size();
+    }
     public String reporteInfoAlumnos(){
         Alumno[] a= new Alumno[10];
         a= alumnos.toArray(a);
@@ -115,11 +118,22 @@ public class Grupo {
      }
      
      public String listaAlumnos(){
-          String acu="MATRICUAL\tEDAD\tNOMBRE\n";
-          acu= acu+"________\t____\t_________________\n";
-         for (int i = 0; i < alumnos.size(); i++) {
-             acu=acu+ alumnos.get(i).getMatricula() +"\t\t"+alumnos.get(i).edad() +"\t"+alumnos.get(i).nombreCompleto()+"\n";
+         try{
+            String acu="CURPO\tMATRICUAL\tEDAD\tNOMBRE\n";
+            acu= acu+"________\t____\t_________________\n";
+           for (int i = 0; i < alumnos.size(); i++) {
+               acu=acu+alumnos.get(i+1).CURP()+"\t"+ alumnos.get(i).getMatricula() +"\t\t"+alumnos.get(i).edad() +"\t"+alumnos.get(i).nombreCompleto()+"\n";
+           }
+              return acu;
+         }catch(java.lang.IndexOutOfBoundsException e){
+             System.out.println("NO existen todos los alumnos");           
          }
-         return acu;
+         catch(Exception e){
+               System.out.println("Error desconocido");           
+        
+              System.out.println(e);
+             
+         }
+         return null;
      }
 }

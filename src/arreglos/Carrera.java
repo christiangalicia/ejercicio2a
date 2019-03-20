@@ -45,6 +45,9 @@ public class Carrera {
        return total/noGruposActivos;
    }
     
+   public Grupo[] obtenerGrupos(){
+       return grupos;
+   }
     
     
     

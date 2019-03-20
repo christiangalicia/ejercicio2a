@@ -20,7 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        
+       try{ 
        int opcion =10;
         Scanner leer = new Scanner(System.in);
         Carrera tics = new Carrera("tics", 10);
@@ -97,6 +97,13 @@ public class Main {
                System.out.println(tics.obtenerPromedioCarrera());
            }
        }
+    }catch(java.util.InputMismatchException e){
+           System.out.println("Error al ingresar un dato verifica tus campos");
+           
+    }catch(Exception e){
+           System.out.println("error desconocido"+ e);
+    }finally{
+           System.out.println("Programa Terminado");
+       }
     }
-    
 }

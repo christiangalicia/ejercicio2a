@@ -41,5 +41,11 @@ public class Persona {
         //fechaNacimiento
     }
     
+   public String CURP(){
+       
+       return paterno.substring(0, 2)+materno.charAt(0)
+               +nombre.charAt(0)+fechaNacimiento.getYear();
+       
+   }
    
 }
