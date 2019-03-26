@@ -6,6 +6,11 @@
 package arreglos.vistas;
 
 import arreglos.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -60,6 +65,7 @@ public class CatalogoGrupos extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaGrupo = new javax.swing.JTable();
         listaGrupos = new javax.swing.JComboBox<>();
+        txtFecha = new javax.swing.JFormattedTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,16 +114,31 @@ public class CatalogoGrupos extends javax.swing.JInternalFrame {
         getContentPane().add(listaGrupos);
         listaGrupos.setBounds(340, 10, 120, 22);
 
+        txtFecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        getContentPane().add(txtFecha);
+        txtFecha.setBounds(200, 90, 140, 22);
+
         setBounds(0, 0, 498, 370);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        int noAlumnos = 0;
-        String nombre = txtNombre.getText();
-        tics.crearNuevoGrupo(noAlumnos, nombre);
-    
-        txtNombre.setText("");
-        this.cargarGrupos();
+        
+        try {
+            int noAlumnos = 0;
+            String nombre = txtNombre.getText();
+            tics.crearNuevoGrupo(noAlumnos, nombre);
+            
+            txtNombre.setText("");
+            this.cargarGrupos();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            
+            Date fecha = sdf.parse(txtFecha.getText());
+            System.out.println(fecha);
+        } catch (ParseException ex) {
+            Logger.getLogger(CatalogoGrupos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 
@@ -129,6 +150,7 @@ public class CatalogoGrupos extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> listaGrupos;
     private javax.swing.JTable tablaGrupo;
+    private javax.swing.JFormattedTextField txtFecha;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

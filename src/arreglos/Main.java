@@ -54,6 +54,7 @@ public class Main {
                         System.out.println("5 cargar materias al grupo");
                         System.out.println("6 Reporte info alumnos");
                         System.out.println("7 Reporte info profesores");
+                        System.out.println("8 Agregar profesor");
                         
                         System.out.println("0 salir");
                         opcion2= leer.nextInt();
@@ -73,7 +74,27 @@ public class Main {
                             Date fecha = new Date(f);
                             g.agregarAlumno(matricula,g.getNombre(),"TICS", 
                                     nom, paterno, materno, sexo, fecha);
-                        }else if(opcion2==3){
+                        }if(opcion2==8){
+                         
+                            System.out.println("Ingresa nombre");
+                            String nom= leer.next();
+                            System.out.println("Ingresa apellido paterno");
+                            String paterno= leer.next();
+                            System.out.println("Ingresa apellido materno");
+                            String materno= leer.next();
+                            System.out.println("Ingresa sexo");
+                            String sexo= leer.next();
+                            System.out.println("Ingresa fecha de nacimiento");
+                            String f= leer.next();
+                            System.out.println("Grado estudios");
+                            String grado= leer.next();
+                            System.out.println("Tipo Profesor");
+                            String tipoProfesor= leer.next();
+                            System.out.println("Materia");
+                            String materia= leer.next();
+                            g.agregarProfesor(nombre, paterno, materno, sexo, f, grado, tipoProfesor, materia);
+                        }
+                        else if(opcion2==3){
                             System.out.println(g.promedio());
                         }else if(opcion2==4){
                             System.out.println("-----Lista Alumnos "+g.getNombre()+"------");
@@ -100,8 +121,6 @@ public class Main {
     }catch(java.util.InputMismatchException e){
            System.out.println("Error al ingresar un dato verifica tus campos");
            
-    }catch(Exception e){
-           System.out.println("error desconocido"+ e);
     }finally{
            System.out.println("Programa Terminado");
        }

@@ -5,6 +5,7 @@
  */
 package arreglos;
 
+import arreglos.modelo.ModeloProfesor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -18,9 +19,11 @@ public class Grupo {
     private ArrayList<Alumno> alumnos;
     private ArrayList<Profesor> profesores;
     private String nombre;
+    private  ModeloProfesor mp;
     public Grupo(int noAlumnos, String nombre){
+        mp= new ModeloProfesor();
         alumnos = new ArrayList<Alumno>();
-        profesores= new ArrayList<>();
+        profesores= mp.listaProfesores();
         this.nombre=nombre;
         alumnos.add(new Alumno(123, nombre, "tics", "christian", "galicia", 
                 "garcia", "hombre", new Date("17/08/1984")));
@@ -31,10 +34,7 @@ public class Grupo {
         alumnos.add(new Alumno(12, nombre, "tics", "Ana Maria", "zarate", 
                 "garcia", "hombre", new Date("17/08/1988")));
         
-        profesores.add(new Profesor("Luis", "sanchez", "delgado", "hombre", new Date("17/07/1985"), "Maestria", "PTC", "programacion"));
-        profesores.add(new Profesor("Maria", "sanchez", "delgado", "hombre", new Date("17/07/1984"), "Maestria", "PTC", "redes"));
-        profesores.add(new Profesor("Paco", "sanchez", "delgado", "hombre", new Date("17/07/1983"), "Maestria", "PTC", "ingles"));
-    
+       
     }
     public String getNombre(){
         return nombre;
@@ -72,7 +72,11 @@ public class Grupo {
            alumnos.get(i).agregarMateria(m5);
        }
    }
-    
+    public void agregarProfesor(String nombre,String paterno,String materno,
+                        String sexo,String fechaNacimiento,String gradoEstudios,
+                        String tipoProfesor, String materia){
+        mp.insertarProfesor(nombre, paterno, materno, sexo, fechaNacimiento, gradoEstudios, tipoProfesor, materia);
+    }
     public void agregarAlumno(int matricula, String grado, String carrera,
                                  String nombre, String paterno, String materno,
                                  String sexo, Date fechaNacimiento){
